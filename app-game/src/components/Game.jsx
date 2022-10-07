@@ -54,6 +54,12 @@ export default function Game({open, lvl, onClose}) {
             setMessage('Try again !')
         }
     }
+    const handleReset = () => {
+        setViewCat(false)
+        setViewAlert(false)
+        setUserInput(0)
+        randomMath()
+    }
 
     //log
     useEffect(()=>{
@@ -88,6 +94,13 @@ export default function Game({open, lvl, onClose}) {
                     onClick={handleControl}
                 >
                 Envoyer
+                </Button>
+                <Button
+                    variant={"contained"}
+                    color={"warning"}
+                    onClick={handleReset}
+                >
+                    Again !
                 </Button>
                 <div>
                     {viewAlert && <Alert severity={"warning"}>{message}</Alert>}
