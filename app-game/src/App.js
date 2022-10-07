@@ -1,19 +1,44 @@
-import React from "react";
-import {Button, createTheme, CssBaseline, ThemeProvider, Typography} from "@mui/material";
+import React, {useEffect, useState} from "react";
+import {Button, CssBaseline, ThemeProvider, Typography, createTheme} from "@mui/material";
+import Game from "./components/Game";
+
 
 
 export default function App() {
+  const [lvl, setLvl] = useState("");
+  const [openDialog, setOpenDialog] = useState(false);
 
+  //log
+  useEffect(()=>{
+    console.log('Open : ', openDialog)
+    console.log('lvl :', lvl)
+  }, [openDialog, lvl])
   return (
   <ThemeProvider theme={themeDark} >
     <CssBaseline />
     <Typography>
-      <Button variant={"contained"}>Easy</Button>
+      <Button
+          variant={"contained"}
+          onClick={() => {setOpenDialog(true); setLvl('easy')}}
+      >
+        Easy
+      </Button>
     </Typography>
     <Typography>
-      <Button variant={"contained"}>Medium</Button>
-    </Typography> <Typography>
-      <Button variant={"contained"}>Expert</Button>
+      <Button
+          variant={"contained"}
+          onClick={() => {setOpenDialog(true); setLvl('medium')}}
+      >
+        Medium
+      </Button>
+    </Typography>
+    <Typography>
+      <Button
+          variant={"contained"}
+          onClick={() => {setOpenDialog(true); setLvl('expert')}}
+      >Expert
+      </Button>
+      {openDialog && <Game open={true} onClose={() =>setOpenDialog(false)} lvl={lvl} />}
     </Typography>
   </ThemeProvider>
   );
