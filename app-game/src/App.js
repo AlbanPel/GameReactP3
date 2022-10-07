@@ -1,25 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import {Button, createTheme, CssBaseline, ThemeProvider, Typography} from "@mui/material";
 
-function App() {
+
+export default function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+  <ThemeProvider theme={themeDark} >
+    <CssBaseline />
+    <Typography>
+      <Button variant={"contained"}>Easy</Button>
+    </Typography>
+    <Typography>
+      <Button variant={"contained"}>Medium</Button>
+    </Typography> <Typography>
+      <Button variant={"contained"}>Expert</Button>
+    </Typography>
+  </ThemeProvider>
   );
 }
 
-export default App;
+const themeDark = createTheme({
+  palette: {
+    background: {
+      paper: '#007be0',
+      default: '#001e3c'
+    },
+    primary: {
+      main: '#033a75',
+    },
+    secondary: {
+      main: '#007be0'
+    },
+    text: {
+      primary: "#fff"
+    }
+  }
+})
+
