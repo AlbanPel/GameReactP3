@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {Alert, Button, Dialog, DialogActions, DialogContent, DialogTitle, TextField, Typography} from "@mui/material";
+import ApiCat from "./ApiCat";
 
 export default function Game({open, lvl, onClose}) {
     const [numb1, setNumb1] = useState(0);
@@ -9,6 +10,7 @@ export default function Game({open, lvl, onClose}) {
     const [userInput, setUserInput] = useState("");
     const [message, setMessage] = useState("");
     const [viewAlert, setViewAlert] = useState(false);
+    const [viewCat, setViewCat] = useState(false);
 
 
     const randomMath = () => {
@@ -42,10 +44,12 @@ export default function Game({open, lvl, onClose}) {
 
     const handleControl = () => {
         if (userInput == result) {
+            setViewCat(true)
             setViewAlert(false)
-            setMessage('Bien joué !')
+            //setMessage('Bien joué !')
         }
         else {
+            setViewCat(false)
             setViewAlert(true)
             setMessage('Try again !')
         }
@@ -88,6 +92,8 @@ export default function Game({open, lvl, onClose}) {
                 <div>
                     {viewAlert && <Alert severity={"warning"}>{message}</Alert>}
                 </div>
+                {viewCat && <ApiCat />}
+
 
             </DialogContent>
             <DialogActions>
