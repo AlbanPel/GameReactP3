@@ -8,7 +8,7 @@ export default function App() {
   const [lvl, setLvl] = useState("");
   const [openDialog, setOpenDialog] = useState(false);
 
-  //log
+  //log !!!
   useEffect(()=>{
     console.log('Open : ', openDialog)
     console.log('lvl :', lvl)
@@ -58,7 +58,8 @@ const themeDark = createTheme({
     },
     text: {
       primary: "#fff"
-    }
+    },
+
   }
 })
 
